@@ -13,7 +13,7 @@ export default function Education() {
           <div>
             <div className="section-label">Qualifications</div>
             <h2>Training built on strong medical foundations.</h2>
-            <p>Dr. Mulla’s career path combines undergraduate medical training, internal medicine expertise and advanced endocrine practice across tertiary-care settings in Maharashtra.</p>
+            <p>Dr. Sadiq’s career path combines undergraduate medical training, internal medicine expertise and advanced endocrine practice across tertiary-care settings in Maharashtra.</p>
           </div>
 
           <div className="timeline">

@@ -16,7 +16,7 @@ export default function Home() {
             <div className="eyebrow hero-kicker"><span>Specialist Endocrine Care</span><span>·</span><span>Pune</span></div>
             <h1>Better diabetes care.<br />Better hormonal health.<br /><em>Better life.</em></h1>
             <p className="hero-lead hero-lead-large">
-              Dr. Sadiq Yunus Mulla is a Consultant Endocrinologist &amp; Diabetologist offering personalised, evidence-based care for diabetes, thyroid disorders, obesity, PCOS, bone health and complex hormonal conditions.
+              Dr. Sadiq Mulla is a Consultant Endocrinologist &amp; Diabetologist offering personalised, evidence-based care for diabetes, thyroid disorders, obesity, PCOS, bone health and complex hormonal conditions.
             </p>
             <div className="hero-actions">
               <button className="primary-btn hero-appointment" onClick={() => openWhatsApp('Hello Dr. Sadiq Mulla clinic, I would like to book an appointment.')}>
@@ -34,7 +34,7 @@ export default function Home() {
           <div className="hero-visual">
             <div className="hero-orb" />
             <div className="hero-photo-frame">
-              <img src="/dr-sadiq-mulla.png" alt="Dr. Sadiq Yunus Mulla, Consultant Endocrinologist and Diabetologist" />
+              <img src="/dr-sadiq-mulla.png" alt="Dr. Sadiq Mulla, Consultant Endocrinologist and Diabetologist" />
               <div className="hero-photo-shade" />
               <div className="hero-photo-tag glass-panel">
                 <div className="tag-icon"><Stethoscope size={17} /></div>
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
           <div className="intro-copy">
             <p>Hormonal and metabolic conditions can influence energy, weight, blood sugar, fertility, bones and everyday life. The approach is simple: understand the whole picture, explain it clearly and create a practical plan for long-term health.</p>
-            <Link className="text-link" to="/about">Explore Dr. Mulla's approach <ArrowRight size={16} /></Link>
+            <Link className="text-link" to="/about">Explore Dr. Sadiq's approach <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>

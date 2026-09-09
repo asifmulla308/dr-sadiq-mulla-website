@@ -1,11 +1,11 @@
 export const doctor = {
-  name: 'Dr. Sadiq Yunus Mulla',
+  name: 'Dr. Sadiq Mulla',
   title: 'Consultant Endocrinologist & Diabetologist',
   experience: '10+ years',
   qualifications: ['MBBS', 'MD (General Medicine)', 'DrNB (Endocrinology)'],
   languages: ['English', 'Hindi', 'Marathi'],
-  whatsapp: '919730443651',
-  whatsappDisplay: '+91 9730443651',
+  whatsapp: '919890916078',
+  whatsappDisplay: '+91 9890916078',
 };
 
 export const services = [
