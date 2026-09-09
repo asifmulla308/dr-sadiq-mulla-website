@@ -1,6 +1,6 @@
-# Dr. Sadiq Yunus Mulla — React Clinic Website
+# Dr. Sadiq  Mulla — React Clinic Website
 
-Professional multi-page React + Vite website for Dr. Sadiq Yunus Mulla, Consultant Endocrinologist & Diabetologist, Pune.
+Professional multi-page React + Vite website for Dr. Sadiq  Mulla, Consultant Endocrinologist & Diabetologist, Pune.
 
 ## Run locally
 
