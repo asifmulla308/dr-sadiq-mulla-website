@@ -5,7 +5,9 @@ export const doctor = {
   qualifications: ['MBBS', 'MD (General Medicine)', 'DrNB (Endocrinology)'],
   languages: ['English', 'Hindi', 'Marathi'],
   whatsapp: '919890916078',
-  whatsappDisplay: '+91 9890916078',
+  whatsappDisplay: '+91 98909 16078',
+  clinicLocations: 'Pune and surrounding areas',
+  consultationMode: 'Clinic consultations across Pune',
 };
 
 export const services = [

@@ -1,58 +1,82 @@
-import React from 'react';
-import { ArrowRight, CalendarDays, CheckCircle2, Clock3, MapPin, MessageCircle, ShieldCheck, Stethoscope } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, CalendarDays, Clock3, MapPin, MessageCircle, ShieldCheck, Stethoscope } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { doctor, locations, services, openWhatsApp } from '../components/siteData';
+import { locations, services, openWhatsApp } from '../components/siteData';
 
 const heroServices = services.slice(0, 6);
+const sliderImages = [
+  { src: '/dr_sadiq_slider_images/slide-1-expert-care-4k.png', alt: 'Expert care', to: '/services', objectPosition: 'center 55%' },
+  { src: '/dr_sadiq_slider_images/slide-2-diabetes-care-4k.png', alt: 'Diabetes care', to: '/services', objectPosition: 'center 50%' },
+  { src: '/dr_sadiq_slider_images/slide-3-hormonal-disorders-4k.png', alt: 'Hormonal disorders', to: '/services', objectPosition: 'center 52%' },
+  { src: '/dr_sadiq_slider_images/slide-4-healthy-lifestyle-4k.png', alt: 'Healthy lifestyle', to: '/about', objectPosition: 'center 48%' },
+  { src: '/dr_sadiq_slider_images/slide-5-why-choose-dr-sadiq-4k.png', alt: 'Why choose Dr. Sadiq Mulla', to: '/about', objectPosition: 'center center' },
+  { src: '/dr_sadiq_slider_images/slide-6-book-appointment-4k.png', alt: 'Book appointment', to: '/contact', objectPosition: 'center 45%' },
+];
 
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % sliderImages.length);
+    }, 2600);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const visibleSlides = [
+    sliderImages[(activeSlide + sliderImages.length - 1) % sliderImages.length],
+    sliderImages[activeSlide],
+    sliderImages[(activeSlide + 1) % sliderImages.length],
+  ];
+
   return (
     <>
-      <section className="hero hero-modern">
-        <div className="hero-glow hero-glow-one" />
-        <div className="hero-glow hero-glow-two" />
-        <div className="container hero-modern-grid">
-          <div className="hero-copy">
-            <div className="eyebrow hero-kicker"><span>Specialist Endocrine Care</span><span>·</span><span>Pune</span></div>
-            <h1>Better diabetes care.<br />Better hormonal health.<br /><em>Better life.</em></h1>
-            <p className="hero-lead hero-lead-large">
-              Dr. Sadiq Mulla is a Consultant Endocrinologist &amp; Diabetologist offering personalised, evidence-based care for diabetes, thyroid disorders, obesity, PCOS, bone health and complex hormonal conditions.
-            </p>
-            <div className="hero-actions">
-              <button className="primary-btn hero-appointment" onClick={() => openWhatsApp('Hello Dr. Sadiq Mulla clinic, I would like to book an appointment.')}>
-                <MessageCircle size={18} /> Book an Appointment
-              </button>
-              <Link className="secondary-btn hero-about" to="/about">Know Dr. Sadiq <ArrowRight size={17} /></Link>
-            </div>
-            <div className="hero-credentials">
-              <span><CheckCircle2 size={16} /> DrNB (Endocrinology)</span>
-              <span><CheckCircle2 size={16} /> MD (General Medicine)</span>
-              <span><CheckCircle2 size={16} /> 10+ years' experience</span>
-            </div>
-          </div>
+      <section className="hero hero-reference">
+        <div className="container hero-reference-wrap">
+          <div className="reference-photo-stack-wrap">
+            <Link
+              className="reference-photo-card hero-slide-full"
+              to={sliderImages[activeSlide].to}
+              aria-label={sliderImages[activeSlide].alt}
+              style={{
+                backgroundImage: `url(${sliderImages[activeSlide].src})`,
+                backgroundPosition: sliderImages[activeSlide].objectPosition,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
 
-          <div className="hero-visual">
-            <div className="hero-orb" />
-            <div className="hero-photo-frame">
-              <img src="/dr-sadiq-mulla.png" alt="Dr. Sadiq Mulla, Consultant Endocrinologist and Diabetologist" />
-              <div className="hero-photo-shade" />
-              <div className="hero-photo-tag glass-panel">
-                <div className="tag-icon"><Stethoscope size={17} /></div>
-                <div><strong>Specialist endocrine care</strong><span>Diabetes · Hormones · Metabolism</span></div>
-              </div>
+            <div className="hero-slide-dots" aria-label="Hero image carousel navigation">
+              {sliderImages.map((slide, index) => (
+                <button
+                  key={slide.alt}
+                  type="button"
+                  className={index === activeSlide ? 'active' : ''}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Show ${slide.alt}`}
+                />
+              ))}
             </div>
           </div>
         </div>
-      </section>
 
-      <section className="proof-strip proof-glass">
-        <div className="container proof-grid">
+        <div className="container stat-band">
           <div><strong>10+</strong><span>years of experience</span></div>
           <div><strong>5K+</strong><span>patients</span></div>
           <div><strong>4</strong><span>hospital</span></div>
           <div><strong>8</strong><span>core endocrine care areas</span></div>
         </div>
       </section>
+
+      {/* <section className="proof-strip proof-glass">
+        <div className="container proof-grid">
+          <div><strong>10+</strong><span>years of experience</span></div>
+          <div><strong>5K+</strong><span>patients</span></div>
+          <div><strong>4</strong><span>hospital</span></div>
+          <div><strong>8</strong><span>core endocrine care areas</span></div>
+        </div>
+      </section> */}
 
       <section className="section intro-modern">
         <div className="container premium-summary">
@@ -70,14 +94,31 @@ export default function Home() {
       </section>
 
       <section className="section intro-modern soft-panel">
-        <div className="container intro-grid">
+        <div className="container intro-grid reference-intro">
           <div>
-            <div className="section-label">A specialist, not a generic clinic</div>
-            <h2>Clear answers for conditions that can feel complicated.</h2>
+            <div className="section-label">Award winning patient care</div>
+            <h2>Award winning patient care</h2>
           </div>
           <div className="intro-copy">
-            <p>Hormonal and metabolic conditions can influence energy, weight, blood sugar, fertility, bones and everyday life. The approach is simple: understand the whole picture, explain it clearly and create a practical plan for long-term health.</p>
-            <Link className="text-link" to="/about">Explore Dr. Sadiq's approach <ArrowRight size={16} /></Link>
+            <p>Endocrine care is about connecting the dots between hormones, metabolism, daily energy, and long-term heart and bone health.</p>
+          </div>
+        </div>
+
+        <div className="container reference-feature-grid">
+          <div className="reference-feature-card">
+            <div className="feature-icon"><Stethoscope size={18} /></div>
+            <h3>Hormone &amp; metabolic testing</h3>
+            <p>Comprehensive evaluation of blood sugar, thyroid function, metabolism, and hormone-related symptoms.</p>
+          </div>
+          <div className="reference-feature-card">
+            <div className="feature-icon"><ShieldCheck size={18} /></div>
+            <h3>Cardio-metabolic risk care</h3>
+            <p>Integrated support for insulin resistance, weight concerns, cholesterol and long-term heart protection.</p>
+          </div>
+          <div className="reference-feature-card">
+            <div className="feature-icon"><CalendarDays size={18} /></div>
+            <h3>Bone &amp; hormone balance</h3>
+            <p>Guidance for vitamin D, calcium balance, bone strength, and hormonal conditions that affect daily wellbeing.</p>
           </div>
         </div>
       </section>

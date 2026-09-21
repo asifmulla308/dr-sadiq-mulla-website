@@ -6,13 +6,20 @@ import {doctor,openWhatsApp} from './siteData';
 const links=[['/about','About'],['/education','Education'],['/services','Specialties'],['/experience','Experience'],['/timings','Clinics & Timings'],['/faq','FAQs'],['/contact','Contact']];
 export default function Layout({children}){
  const [open,setOpen]=useState(false);
+ const [loading,setLoading]=useState(true);
  const location = useLocation();
 
  useEffect(() => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
  }, [location.pathname]);
 
+ useEffect(() => {
+  const timer = window.setTimeout(() => setLoading(false), 900);
+  return () => window.clearTimeout(timer);
+ }, [location.pathname]);
+
  return <div className="app-shell">
+  {loading && <div className="page-loader" aria-live="polite"><div className="loader-ring" /><span>Loading clinic details...</span></div>}
   <div className="top-notice"><div className="container top-notice-inner"><span>Consultant Endocrinologist &amp; Diabetologist · Pune</span><button onClick={()=>openWhatsApp('Hello Dr. Sadiq Mulla clinic, I would like to book an appointment.')}><MessageCircle size={14}/> WhatsApp Appointment</button></div></div>
   <header className="header"><div className="container nav-wrap">
    <Link to="/" className="brand" onClick={()=>setOpen(false)}><img src="/logo.svg" alt="Dr. Sadiq Mulla" className="brand-logo"/></Link>

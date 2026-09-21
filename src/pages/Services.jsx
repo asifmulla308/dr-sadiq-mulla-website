@@ -21,14 +21,35 @@ export default function Services() {
 
       <section className="section">
         <div className="container services-intro">
-          <div className="section-label">Endocrine & metabolic care</div>
-          <h2>Specialist care for diabetes, hormones and the issues that affect daily life.</h2>
+          <div className="section-label">Clinical focus</div>
+          <h2>Endocrine care built around diagnosis, balance and long-term health.</h2>
           <p>
-            Hormonal and metabolic conditions often overlap. From blood sugar and thyroid balance to weight, fertility, growth and bone health,
-            a coordinated specialist approach helps connect symptoms, test results and long-term treatment planning.
+            Dr. Sadiq Mulla supports patients with a wide range of hormone and metabolism-related concerns. Care is designed to be practical,
+            patient-friendly and focused on identifying the root cause behind symptoms like tiredness, weight changes, irregular cycles,
+            blood sugar imbalance and poor energy levels.
           </p>
         </div>
 
+        <div className="container value-grid">
+          <div className="value-card">
+            <div className="icon-box"><Activity size={20} /></div>
+            <h3>Whole-person assessment</h3>
+            <p>Reviewing symptoms, history and lab findings together to uncover the real cause of hormonal imbalance.</p>
+          </div>
+          <div className="value-card">
+            <div className="icon-box"><HeartPulse size={20} /></div>
+            <h3>Long-term treatment planning</h3>
+            <p>Helping patients build sustainable care plans for diabetes, thyroid issues, fertility, weight and metabolic risk.</p>
+          </div>
+          <div className="value-card">
+            <div className="icon-box"><BadgeCheck size={20} /></div>
+            <h3>Clear, guided follow-up</h3>
+            <p>Turning test results into practical next steps, with monitoring that supports lasting health improvement.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container service-collection">
           {services.map((s, i) => {
             const Icon = iconMap[s.title] || BadgeCheck;
